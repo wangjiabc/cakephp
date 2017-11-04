@@ -1,4 +1,5 @@
 <?php
+ header("Content-type: text/html; charset=gb2312");
  require('dir.php');
   try {
  	$post=$_GET['url'];
@@ -17,9 +18,9 @@
  		preg_match('/https:\/\/\.*.*/i',$url1,$url2);
  		$url=$url2[0];
 	}
- }catch (e $e){}                            //ÉèÖÃ²¹È«ÓòÃû
+ }catch (e $e){}                            //ï¿½ï¿½ï¿½Ã²ï¿½È«ï¿½ï¿½ï¿½ï¿½
 /**
- * Ò»¸öÓÃÓÚ×¥È¡Í¼Æ¬µÄÀà
+ * Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¥È¡Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
  *
  * @package default
  * @author  WuJunwei
@@ -28,17 +29,17 @@
 class download_image 
 {
      
-    public $save_path;                  //×¥È¡Í¼Æ¬µÄ±£´æµØÖ·
+    public $save_path;                  //×¥È¡Í¼Æ¬ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ö·
  
-    //×¥È¡Í¼Æ¬µÄ´óÐ¡ÏÞÖÆ(µ¥Î»:×Ö½Ú) Ö»×¥±Èsize±ÈÕâ¸öÏÞÖÆ´óµÄÍ¼Æ¬
+    //×¥È¡Í¼Æ¬ï¿½Ä´ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Î»:ï¿½Ö½ï¿½) Ö»×¥ï¿½ï¿½sizeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ´ï¿½ï¿½Í¼Æ¬
     public $img_size=0; 
  
-    //¶¨ÒåÒ»¸ö¾²Ì¬Êý×é,ÓÃÓÚ¼ÇÂ¼Ôø¾­×¥È¡¹ýµÄµÄ³¬Á´½ÓµØÖ·,±ÜÃâÖØ¸´×¥È¡       
+    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ú¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½×¥È¡ï¿½ï¿½ï¿½ÄµÄ³ï¿½ï¿½ï¿½ï¿½Óµï¿½Ö·,ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½×¥È¡       
     public static $a_url_arr=array();   
      
     /**
-     * @param String $save_path    ×¥È¡Í¼Æ¬µÄ±£´æµØÖ·
-     * @param Int    $img_size     ×¥È¡Í¼Æ¬µÄ±£´æµØÖ·
+     * @param String $save_path    ×¥È¡Í¼Æ¬ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ö·
+     * @param Int    $img_size     ×¥È¡Í¼Æ¬ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ö·
      */
     public function __construct($save_path,$img_size)
     {
@@ -48,38 +49,38 @@ class download_image
      
      
     /**
-     * µÝ¹éÏÂÔØ×¥È¡Ê×Ò³¼°Æä×ÓÒ³ÃæÍ¼Æ¬µÄ·½·¨  ( recursive µÝ¹é)
+     * ï¿½Ý¹ï¿½ï¿½ï¿½ï¿½ï¿½×¥È¡ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Í¼Æ¬ï¿½Ä·ï¿½ï¿½ï¿½  ( recursive ï¿½Ý¹ï¿½)
      *
-     * @param   String  $capture_url  ÓÃÓÚ×¥È¡Í¼Æ¬µÄÍøÖ·
+     * @param   String  $capture_url  ï¿½ï¿½ï¿½ï¿½×¥È¡Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ö·
      * 
      */
     public function recursive_download_images($capture_url)
     {
-        if (!in_array($capture_url,self::$a_url_arr))   //Ã»×¥È¡¹ý
+        if (!in_array($capture_url,self::$a_url_arr))   //Ã»×¥È¡ï¿½ï¿½
         {                         
-            self::$a_url_arr[]=$capture_url;   //¼ÆÈë¾²Ì¬Êý×é
-        } else   //×¥È¡¹ý,Ö±½ÓÍË³öº¯Êý
+            self::$a_url_arr[]=$capture_url;   //ï¿½ï¿½ï¿½ë¾²Ì¬ï¿½ï¿½ï¿½ï¿½
+        } else   //×¥È¡ï¿½ï¿½,Ö±ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             return;
         }        
          
-        $this->download_current_page_images($capture_url);  //ÏÂÔØµ±Ç°Ò³ÃæµÄËùÓÐÍ¼Æ¬
+        $this->download_current_page_images($capture_url);  //ï¿½ï¿½ï¿½Øµï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
          
-        //ÓÃ@ÆÁ±ÎµôÒòÎª×¥È¡µØÖ·ÎÞ·¨¶ÁÈ¡µ¼ÖÂµÄwarning´íÎó
+        //ï¿½ï¿½@ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½Îª×¥È¡ï¿½ï¿½Ö·ï¿½Þ·ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Âµï¿½warningï¿½ï¿½ï¿½ï¿½
         $content=@file_get_contents($capture_url); 
          
-        //Æ¥Åäa±êÇ©hrefÊôÐÔÖÐ?Ö®Ç°²¿·ÖµÄÕýÔò
+        //Æ¥ï¿½ï¿½aï¿½ï¿½Ç©hrefï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?Ö®Ç°ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½
         $a_pattern = "|<a[^>]+href=['\" ]?([^ '\"?]+)['\" >]|U";   
         preg_match_all($a_pattern, $content, $a_out, PREG_SET_ORDER);
          
-        $tmp_arr=array();  //¶¨ÒåÒ»¸öÊý×é,ÓÃÓÚ´æ·Åµ±Ç°Ñ­»·ÏÂ×¥È¡Í¼Æ¬µÄ³¬Á´½ÓµØÖ·
+        $tmp_arr=array();  //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ú´ï¿½Åµï¿½Ç°Ñ­ï¿½ï¿½ï¿½ï¿½×¥È¡Í¼Æ¬ï¿½Ä³ï¿½ï¿½ï¿½ï¿½Óµï¿½Ö·
         foreach ($a_out as $k => $v) 
         {
             /**
-             * È¥³ý³¬Á´½ÓÖÐµÄ ¿Õ'','#','/'ºÍÖØ¸´Öµ  
-             * 1: ³¬Á´½ÓµØÖ·µÄÖµ ²»ÄÜµÈÓÚµ±Ç°×¥È¡Ò³ÃæµÄurl, ·ñÔò»áÏÝÈëËÀÑ­»·
-             * 2: ³¬Á´½ÓÎª''»ò'#','/'Ò²ÊÇ±¾Ò³Ãæ,ÕâÑùÒ²»áÏÝÈëËÀÑ­»·,  
-             * 3: ÓÐÊ±Ò»¸ö³¬Á¬½ÓµØÖ·ÔÚÒ»¸öÍøÒ³ÖÐ»áÖØ¸´³öÏÖ¶à´Î,Èç¹û²»È¥³ý,»á¶ÔÒ»¸ö×ÓÒ³Ãæ½øÐÐÖØ¸´ÏÂÔØ)
+             * È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ ï¿½ï¿½'','#','/'ï¿½ï¿½ï¿½Ø¸ï¿½Öµ  
+             * 1: ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Ö·ï¿½ï¿½Öµ ï¿½ï¿½ï¿½Üµï¿½ï¿½Úµï¿½Ç°×¥È¡Ò³ï¿½ï¿½ï¿½url, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½
+             * 2: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª''ï¿½ï¿½'#','/'Ò²ï¿½Ç±ï¿½Ò³ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½,  
+             * 3: ï¿½ï¿½Ê±Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Ö·ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ò³ï¿½Ð»ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½,ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½)
              */
             if ( $v[1] && !in_array($v[1],self::$a_url_arr) &&!in_array($v[1],array('#','/',$capture_url) ) ) 
             {
@@ -89,11 +90,11 @@ class download_image
    
         foreach ($tmp_arr as $k => $v) 
         {            
-            //³¬Á´½ÓÂ·¾¶µØÖ·
-            if ( strpos($v, 'http://')!==false ) //Èç¹ûurl°üº¬http://,¿ÉÒÔÖ±½Ó·ÃÎÊ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½Ö·
+            if ( strpos($v, 'http://')!==false ) //ï¿½ï¿½ï¿½urlï¿½ï¿½ï¿½ï¿½http://,ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½
             {
                 $a_url = $v;
-            }else   //·ñÔòÖ¤Ã÷ÊÇÏà¶ÔµØÖ·, ÐèÒªÖØÐÂÆ´´Õ³¬Á´½ÓµÄ·ÃÎÊµØÖ·
+            }else   //ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½Ö·, ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Æ´ï¿½Õ³ï¿½ï¿½ï¿½ï¿½ÓµÄ·ï¿½ï¿½Êµï¿½Ö·
             {
                 $domain_url = substr($capture_url, 0,strpos($capture_url, '/',8)+1);
                 $a_url=$domain_url.$v;
@@ -107,22 +108,22 @@ class download_image
      
        
     /**
-     * ÏÂÔØµ±Ç°ÍøÒ³ÏÂµÄËùÓÐÍ¼Æ¬ 
+     * ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½Ò³ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ 
      *
-     * @param   String  $capture_url  ÓÃÓÚ×¥È¡Í¼Æ¬µÄÍøÒ³µØÖ·
-     * @return  Array   µ±Ç°ÍøÒ³ÉÏËùÓÐÍ¼Æ¬img±êÇ©urlµØÖ·µÄÒ»¸öÊý×é
+     * @param   String  $capture_url  ï¿½ï¿½ï¿½ï¿½×¥È¡Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ö·
+     * @return  Array   ï¿½ï¿½Ç°ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬imgï¿½ï¿½Ç©urlï¿½ï¿½Ö·ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     public function download_current_page_images($capture_url)
     {
-        $content=@file_get_contents($capture_url);   //ÆÁ±Îwarning´íÎó
+        $content=@file_get_contents($capture_url);   //ï¿½ï¿½ï¿½ï¿½warningï¿½ï¿½ï¿½ï¿½
  
-        //Æ¥Åäimg±êÇ©srcÊôÐÔÖÐ?Ö®Ç°²¿·ÖµÄÕýÔò
+        //Æ¥ï¿½ï¿½imgï¿½ï¿½Ç©srcï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?Ö®Ç°ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½
         $img_pattern = "|<img[^>]+src=['\" ]?([^ '\"?]+)['\" >]|U";   
         preg_match_all($img_pattern, $content, $img_out, PREG_SET_ORDER);
  
         $photo_num = count($img_out);
-        //Æ¥Åäµ½µÄÍ¼Æ¬ÊýÁ¿
-        echo '<h1>'.$capture_url . "¹²ÕÒµ½ " . $photo_num . " ÕÅÍ¼Æ¬</h1>";
+        //Æ¥ï¿½äµ½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+        echo '<h1>'.$capture_url . "ï¿½ï¿½ï¿½Òµï¿½ " . $photo_num . " ï¿½ï¿½Í¼Æ¬</h1>";
         foreach ($img_out as $k => $v) 
         {
             $this->save_one_img($capture_url,$v[1]);
@@ -131,15 +132,15 @@ class download_image
  
  
     /**
-     * ±£´æµ¥¸öÍ¼Æ¬µÄ·½·¨ 
+     * ï¿½ï¿½ï¿½æµ¥ï¿½ï¿½Í¼Æ¬ï¿½Ä·ï¿½ï¿½ï¿½ 
      *
-     * @param String $capture_url   ÓÃÓÚ×¥È¡Í¼Æ¬µÄÍøÒ³µØÖ·
-     * @param String $img_url       ÐèÒª±£´æµÄÍ¼Æ¬µÄurl
+     * @param String $capture_url   ï¿½ï¿½ï¿½ï¿½×¥È¡Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ö·
+     * @param String $img_url       ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½url
      * 
      */
     public function save_one_img($capture_url,$img_url)
     {        
-        //Í¼Æ¬Â·¾¶µØÖ·
+        //Í¼Æ¬Â·ï¿½ï¿½ï¿½ï¿½Ö·
         if ( strpos($img_url, 'http://')!==false ) 
         {
             // $img_url = $img_url;
@@ -148,43 +149,43 @@ class download_image
             $domain_url = substr($capture_url, 0,strpos($capture_url, '/',8)+1);
             $img_url=$domain_url.$img_url;
         }           
-        $pathinfo = pathinfo($img_url);    //»ñÈ¡Í¼Æ¬Â·¾¶ÐÅÏ¢        
-        $pic_name=$pathinfo['basename'];   //»ñÈ¡Í¼Æ¬µÄÃû×Ö
-        if (file_exists($this->save_path.$pic_name))  //Èç¹ûÍ¼Æ¬´æÔÚ,Ö¤Ã÷ÒÑ¾­±»×¥È¡¹ý,ÍË³öº¯Êý
+        $pathinfo = pathinfo($img_url);    //ï¿½ï¿½È¡Í¼Æ¬Â·ï¿½ï¿½ï¿½ï¿½Ï¢        
+        $pic_name=$pathinfo['basename'];   //ï¿½ï¿½È¡Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (file_exists($this->save_path.$pic_name))  //ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½,Ö¤ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½×¥È¡ï¿½ï¿½,ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½
         {
-//            echo $img_url . '<span style="color:red;margin-left:80px">¸ÃÍ¼Æ¬ÒÑ¾­×¥È¡¹ý!</span><br/>'; 
+//            echo $img_url . '<span style="color:red;margin-left:80px">ï¿½ï¿½Í¼Æ¬ï¿½Ñ¾ï¿½×¥È¡ï¿½ï¿½!</span><br/>'; 
             return;
         }                
-        //½«Í¼Æ¬ÄÚÈÝ¶ÁÈëÒ»¸ö×Ö·û´®
-        $img_data = @file_get_contents($img_url);   //ÆÁ±ÎµôÒòÎªÍ¼Æ¬µØÖ·ÎÞ·¨¶ÁÈ¡µ¼ÖÂµÄwarning´íÎó
-        if ( strlen($img_data) > $this->img_size )   //ÏÂÔØsize±ÈÏÞÖÆ´óµÄÍ¼Æ¬
+        //ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+        $img_data = @file_get_contents($img_url);   //ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ÎªÍ¼Æ¬ï¿½ï¿½Ö·ï¿½Þ·ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Âµï¿½warningï¿½ï¿½ï¿½ï¿½
+        if ( strlen($img_data) > $this->img_size )   //ï¿½ï¿½ï¿½ï¿½sizeï¿½ï¿½ï¿½ï¿½ï¿½Æ´ï¿½ï¿½Í¼Æ¬
         {
 
            $img_size = file_put_contents($this->save_path.$pic_name, $img_data);
-           echo '<img src="/f2/image/tmp/'.$pic_name.'"><br />';
+           echo '<img src="/image/tmp/'.$pic_name.'"><br />';
             if ($img_size)
             {
-                echo $img_url . '<span style="color:green;margin-left:80px">Í¼Æ¬±£´æ³É¹¦!</span><br/>';
+                echo $img_url . '<span style="color:green;margin-left:80px">Í¼Æ¬ï¿½ï¿½ï¿½ï¿½É¹ï¿½!</span><br/>';
             } else
             {
-                echo $img_url . '<span style="color:red;margin-left:80px">Í¼Æ¬±£´æÊ§°Ü!</span><br/>';
+                echo $img_url . '<span style="color:red;margin-left:80px">Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½!</span><br/>';
             }
         } else
         {
-            echo $img_url . '<span style="color:red;margin-left:80px">Í¼Æ¬¶ÁÈ¡Ê§°Ü!</span><br/>';
+            echo $img_url . '<span style="color:red;margin-left:80px">Í¼Æ¬ï¿½ï¿½È¡Ê§ï¿½ï¿½!</span><br/>';
         } 
 //        unlink(dirname(__FILE__).'/tmp/'.$pic_name);
     } 
 } // END
  
-set_time_limit(120);     //ÉèÖÃ½Å±¾µÄ×î´óÖ´ÐÐÊ±¼ä  ¸ù¾ÝÇé¿öÉèÖÃ 
+set_time_limit(120);     //ï¿½ï¿½ï¿½Ã½Å±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½Ê±ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 $filename=dirname(__FILE__).'/tmp/';
 if(!file_exists($filename)){
 	mkdir($filename,0777);
 }
-$download_img=new download_image($filename,0);   //ÊµÀý»¯ÏÂÔØÍ¼Æ¬¶ÔÏó
-$download_img->recursive_download_images($url);      //µÝ¹é×¥È¡Í¼Æ¬·½·¨
+$download_img=new download_image($filename,0);   //Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+$download_img->recursive_download_images($url);      //ï¿½Ý¹ï¿½×¥È¡Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
 
-//$download_img->download_current_page_images($_POST['capture_url']);     //Ö»×¥È¡µ±Ç°Ò³ÃæÍ¼Æ¬·½·¨
+//$download_img->download_current_page_images($_POST['capture_url']);     //Ö»×¥È¡ï¿½ï¿½Ç°Ò³ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
  
 ?>
