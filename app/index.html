@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div>
+ <form action="test2.php" method="post" target="_blank" id="put" autocomplete
+ ="on">
+ <input id="url" type="text" name="url">
+ <input id="go" type="submit" name="url" value="进 入">
+ <div>
+ <input id="google" type="submit" name="url" value="Google  搜索">
+ </div>
+ </div>
+</form>
+<script type="text/javascript" src="jquery-1.11.2.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+ $('body').css({background:'#CCE8CC'});
+ $('form').css({margin:'20px',color:'#000'});
+ $('form #url').css({position:'relative',width:'80%',right:'-10%',height:'25px'
+	,'font-size':'16px',outline:'none',padding:'4px 0 0 6px'
+	 });
+ $('form #go').css({position:'relative',width:'50px',right:'-10%',height:'24px'
+	 ,cursor:'pointer','font-style':'italic','font-family':'Microsoft YaHei'
+	 });
+ 
+ $('form #google').css({position:'relative',margin:'10px',right:'-43%',height:'31px',width:'113px'
+	 ,'font-family':'Microsoft YaHei',cursor:'pointer','font-family':'Microsoft YaHei'
+	 ,'font-size':'90%'});
+ 
+ $('input').keypress(function(event){
+	  if(event.keyCode==13)
+	  {
+       event.preventDefault();
+       var put=/\./i;
+       var p=document.getElementsByTagName('input')[0].value;
+           
+       if(put.exec(p)){
+    	   console.log(p);
+           document.getElementById('put').submit();
+       }else{
+    	   var g=document.getElementsByTagName('input')[0].value;
+    	   document.getElementsByTagName('input')[0].value=encodeURI('www.google.com/search?q='+g+'&hl=zh');
+
+    	   var p=document.getElementsByTagName('input')[0].value;
+    	   console.log(p);
+
+    	   document.getElementById('put').submit();
+    	   document.getElementsByTagName('input')[0].value=g;
+       }
+	  }
+		
+	});
+  $('#go').on('click',function(event){
+	  event.preventDefault();
+	  var p=document.getElementsByTagName('input')[0].value;
+      console.log(p);
+
+      document.getElementById('put').submit();
+  });
+  $('#google').on('click',function(event){
+	  event.preventDefault();
+	  var g=document.getElementsByTagName('input')[0].value;
+	  document.getElementsByTagName('input')[0].value=encodeURI('www.google.com/search?q='+g+'&hl=zh');
+	  var p=document.getElementsByTagName('input')[0].value;
+      console.log(p);
+
+      document.getElementById('put').submit();
+      document.getElementsByTagName('input')[0].value=g;
+  });
+ });
+ </script>
+  </body>
+</html>
