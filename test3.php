@@ -38,7 +38,7 @@
     var form=document.createElement('form');
     form.method="post";
     form.id="testform";
-    form.action="test2.php";
+    form.action="test3.php";
     form.target="_blank";
     var input=document.createElement('input');
     input.type="text";
