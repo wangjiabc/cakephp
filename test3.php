@@ -2,7 +2,7 @@
 <head>
 </head>
 <?php
-  header("Content-type: text/html; charset=utf8");
+  header("Content-type: text/html; charset=gb2312");
   error_reporting(E_ALL);
   try {
   	$post=$_POST['url'];
